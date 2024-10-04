@@ -1,0 +1,8 @@
+---
+- name: Update swap file status in /etc/fstab
+  ansible.posix.mount:
+    name: none
+    src: "{{ swapfile_path }}"
+    fstype: swap
+    opts: sw
+    state: "{{ swapfile_state }}"

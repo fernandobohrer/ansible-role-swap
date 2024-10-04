@@ -1,0 +1,9 @@
+---
+- name: Check swap file condition
+  ansible.builtin.include_tasks: check-condition.yml
+
+- name: Disable swap file
+  ansible.builtin.command: swapoff {{ swapfile_path }}
+  when: swapfile_condition.stdout == 'swapfile enabled'
+  register: disable_swapfile
+  changed_when: disable_swapfile.changed
