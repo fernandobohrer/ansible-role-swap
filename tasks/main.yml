@@ -1,0 +1,19 @@
+---
+- name: Deploy swap file
+  when: swapfile_state == 'present'
+  ansible.builtin.include_tasks: enable.yml
+
+- name: Remove swap file
+  when: swapfile_state == 'absent'
+  block:
+    - name: Disable swap file
+      ansible.builtin.include_tasks: disable.yml
+    - name: Remove swap file
+      ansible.builtin.include_tasks: remove.yml
+
+- name: Set swappiness parameter
+  ansible.posix.sysctl:
+    name: vm.swappiness
+    value: "{{ swappiness }}"
+    state: present
+    reload: true
