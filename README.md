@@ -35,7 +35,7 @@ An example of how integrate this role to an Ansible playbook can be found here:
 
 ## ⚙️ Compatibility
 
-This role was tested on and is confirmed to work with the following operating systems:
+This role was tested on and is confirmed to work with the following Linux distributions:
 
 - `Debian 12`
 - `Ubuntu 22.04`
@@ -45,7 +45,7 @@ Details can be found in the [Molecule][02] scenarios available in the `molecule`
 
 ## ⚠️ Warning
 
-This Ansible role was tested on the above mentioned operating systems considering their default configuration. Your environment might have a different configuration or requirements which might conflict with the options that this role uses.
+This Ansible role was tested on the above mentioned Linux distributions considering their default configuration. Your environment might have a different configuration or requirements which might conflict with the options that this role uses.
 
 With the above in mind, it is **imperative** that you familiarize yourself with what this role does and test it on non-production machines **before** applying it to machines in a production environment.
 
