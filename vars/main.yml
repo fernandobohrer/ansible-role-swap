@@ -1,3 +1,3 @@
 ---
-# swapfile_block_size is expressed in mebibytes, including the 'M' suffix:
-swapfile_block_size: 100M
+# __swapfile_block_size is expressed in mebibytes, including the 'M' suffix:
+__swapfile_block_size: 100M

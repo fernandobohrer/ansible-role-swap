@@ -33,7 +33,7 @@
         source: /dev/zero
         path: "{{ swapfile_path }}"
         size: "{{ swapfile_size }}"
-        blocksize: "{{ swapfile_block_size }}"
+        blocksize: "{{ __swapfile_block_size }}"
         owner: root
         group: root
         mode: "600"
