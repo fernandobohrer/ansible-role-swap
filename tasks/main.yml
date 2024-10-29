@@ -10,10 +10,3 @@
       ansible.builtin.include_tasks: disable.yml
     - name: Remove swap file
       ansible.builtin.include_tasks: remove.yml
-
-- name: Set swappiness parameter
-  ansible.posix.sysctl:
-    name: vm.swappiness
-    value: "{{ swappiness }}"
-    state: present
-    reload: true
