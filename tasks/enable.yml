@@ -1,6 +1,7 @@
 ---
 - name: Get swap file status
   ansible.builtin.stat:
+    get_checksum: false
     path: "{{ swapfile_path }}"
   register: swapfile_status
 
