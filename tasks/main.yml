@@ -1,12 +1,12 @@
 ---
-- name: Deploy swap file
-  when: swapfile_state == 'present'
-  ansible.builtin.include_tasks: enable.yml
+- name: Enable swap file
+  when: swap__file_state == 'present'
+  ansible.builtin.include_tasks: enable-swap-file.yml
 
 - name: Remove swap file
-  when: swapfile_state == 'absent'
+  when: swap__file_state == 'absent'
   block:
     - name: Disable swap file
-      ansible.builtin.include_tasks: disable.yml
+      ansible.builtin.include_tasks: disable-swap-file.yml
     - name: Remove swap file
-      ansible.builtin.include_tasks: remove.yml
+      ansible.builtin.include_tasks: remove-swap-file.yml

@@ -1,0 +1,8 @@
+---
+- name: Check swap file condition
+  ansible.builtin.shell:
+    executable: /bin/bash
+    cmd: |
+      grep {{ swap__file_path }} /proc/swaps > /dev/null && echo 'swap-file-enabled' || echo 'swap-file-disabled'
+  register: swap__file_condition
+  changed_when: false

@@ -1,0 +1,53 @@
+---
+- name: Get swap file status
+  ansible.builtin.stat:
+    get_checksum: false
+    path: "{{ swap__file_path }}"
+  register: swap__file_status
+
+- name: Set the swap__recreate_swap_file fact
+  ansible.builtin.set_fact:
+    swap__recreate_swap_file: false
+
+- name: Set the swap__existing_swap_file_size fact
+  ansible.builtin.set_fact:
+    swap__existing_swap_file_size: "{{ (swap__file_status.stat.size / 1024 / 1024) | int }}"
+  when: swap__file_status.stat.exists
+
+- name: Set the swap__recreate_swap_file fact
+  ansible.builtin.set_fact:
+    swap__recreate_swap_file: "{{ (swap__file_size | replace('M', '')) != swap__existing_swap_file_size }}"
+  when: swap__file_status.stat.exists
+
+- name: Check swap file condition
+  ansible.builtin.include_tasks: check-swap-file-condition.yml
+
+- name: Create or modify swap file
+  when: not swap__file_status.stat.exists or swap__recreate_swap_file or swap__file_condition.stdout == 'swap-file-disabled'
+  block:
+    - name: Disable swap file
+      ansible.builtin.include_tasks: disable-swap-file.yml
+      when: swap__recreate_swap_file
+
+    - name: Create swap file
+      community.general.filesize:
+        source: /dev/zero
+        path: "{{ swap__file_path }}"
+        size: "{{ swap__file_size }}"
+        blocksize: "{{ __swap__file_block_size }}"
+        owner: root
+        group: root
+        mode: "600"
+
+    - name: Setup swap file
+      ansible.builtin.command: mkswap {{ swap__file_path }}
+      register: swap__setup
+      changed_when: swap__setup.changed
+
+    - name: Add swap file entry to /etc/fstab
+      ansible.builtin.include_tasks: update-swap-file-fstab-entry.yml
+
+    - name: Enable swap file
+      ansible.builtin.command: swapon {{ swap__file_path }}
+      register: swap__enable
+      changed_when: swap__enable.changed

@@ -1,8 +1,8 @@
 ---
-swapfile_path: /swapfile
+swap__file_path: /swapfile
 
-# swapfile_size is expressed in mebibytes, including the 'M' suffix:
-swapfile_size: 512M
+# swap__file_size is expressed in mebibytes, including the 'M' suffix:
+swap__file_size: 512M
 
-# swapfile_state can be either 'present' or 'absent':
-swapfile_state: present
+# swap__file_state can be either 'present' or 'absent':
+swap__file_state: present

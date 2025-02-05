@@ -1,8 +1,0 @@
----
-- name: Remove swap file from /etc/fstab
-  ansible.builtin.include_tasks: manage-fstab.yml
-
-- name: Remove swap file
-  ansible.builtin.file:
-    state: absent
-    path: "{{ swapfile_path }}"
