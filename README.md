@@ -25,7 +25,7 @@ An example of how integrate this role to an Ansible playbook can be found here:
 
 ```yml
 ---
-- name: Deploy swap
+- name: Deploy swap file
   hosts: all
   become: true
   gather_facts: true
