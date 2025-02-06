@@ -13,7 +13,7 @@ Swap files, however, also present the following advantages:
 
 ## 📑 Role Variables
 
-Check `defaults/main.yml`.
+Check [here][02].
 
 ## 🧰 Dependencies
 
@@ -41,7 +41,7 @@ This role was tested on and is confirmed to work with the following Linux distri
 - `Ubuntu 22.04`
 - `Ubuntu 24.04`
 
-Details can be found in the [Molecule][02] scenarios available in the `molecule` folder.
+Details can be found in the [Molecule][03] scenarios available in the `molecule` folder.
 
 ## ⚠️ Warning
 
@@ -51,8 +51,9 @@ With the above in mind, it is **imperative** that you familiarize yourself with 
 
 ## 📝 License
 
-This project is licensed under the terms of the [MIT license][03].
+This project is licensed under the terms of the [MIT license][04].
 
 [01]: https://lkml.org/lkml/2005/7/7/326
-[02]: https://github.com/fernandobohrer/ansible-molecule-scenarios
-[03]: /LICENSE
+[02]: defaults/main.yml
+[03]: https://github.com/fernandobohrer/ansible-molecule-scenarios
+[04]: /LICENSE
