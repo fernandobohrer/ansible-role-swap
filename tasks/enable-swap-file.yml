@@ -16,7 +16,7 @@
 
 - name: Set the swap__recreate_swap_file fact
   ansible.builtin.set_fact:
-    swap__recreate_swap_file: "{{ (swap__file_size | replace('M', '')) != swap__existing_swap_file_size }}"
+    swap__recreate_swap_file: "{{ (swap__file_size | replace('M', '') | int) != swap__existing_swap_file_size }}"
   when: swap__file_status.stat.exists
 
 - name: Check swap file condition
