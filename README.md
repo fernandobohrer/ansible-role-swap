@@ -4,7 +4,7 @@ An Ansible role that deploys and configures a swap file on Linux boxes.
 
 ## 🚀 Motivation
 
-Since Linux kernel 2.6, swap files have the same level of performance and reliability that swap partitions. Details can be found [here][01].
+Since Linux kernel 2.6, swap files have the same level of performance and reliability that swap partitions. Details can be found in [this][01] Linux Kernel Mailing List message thread.
 
 Swap files, however, also present the following advantages:
 
@@ -13,7 +13,7 @@ Swap files, however, also present the following advantages:
 
 ## 📑 Role Variables
 
-Check [here][02].
+Check [defaults/main.yml][02].
 
 ## 🧰 Dependencies
 
